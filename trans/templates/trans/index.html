@@ -1,0 +1,89 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> {{ title }}</title>
+    <link rel="stylesheet" href="{% static 'trans/stylee.css' %}">
+    <script src='{% static 'trans/jquery.js' %}'></script>
+    <script src='{% static 'trans/script.js' %}'></script>
+
+</head>
+<body>
+
+
+<header>
+    <div class="header1">
+
+    </div>
+
+</header>
+
+
+<div class="block">
+
+    <div>
+
+
+        <input type="radio" name="language" value="en"> English
+        <input type="radio" name="language" value="ru"> Русский
+        <input type="radio" name="language" value="zh"> 中文
+        <span>  ---------------------------------------------------------------------------------- </span>
+        <input type="radio" name="language_to" value="en"> English
+        <input type="radio" name="language_to" value="ru"> Русский
+        <input type="radio" name="language_to" value="zh"> 中文
+
+
+    </div>
+
+
+
+    <div class="block_colm">
+
+        <div >
+            <textarea id="txtMessage"></textarea>
+        </div>
+
+        <div class="block_item">
+            <p id="output"></p>
+        </div>
+
+    </div>
+
+<button id="btnSubmit" class="btn">Отправить</button>
+
+
+</div>
+<script>
+
+    $(document).ready(function() {
+$('#btnSubmit').click(function() {
+var selectedLanguage = $('input[name="language"]:checked').val();
+var translatedLanguage = $('input[name="language_to"]:checked').val();
+var inputText = $('#txtMessage').val();
+
+$.ajax({
+    url: '{% url 'trans:index' %}', // URL-адрес обработчика Django-представления
+    type: 'POST',
+    data: {
+    language: selectedLanguage,
+    text: inputText,
+    text_to : translatedLanguage
+    },
+    success: function(response) {
+    $('#output').text(response.translatedText);
+    },
+    error: function(xhr, errorMsg, errorThrown) {
+    console.log(errorMsg);
+    }
+    });
+    });
+    });
+</script>
+
+
+
+</body>
+</html>

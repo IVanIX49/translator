@@ -1,0 +1,40 @@
+
+
+
+
+
+
+body{
+    background-color: #CDEDFB;
+}
+
+.block{
+
+    height: 500px;
+
+
+
+}
+
+.block_colm{
+
+    height: 400px;
+    display: flex;
+    justify-content: center;
+}
+.block_item{
+    background-color: whitesmoke;
+    height: 400px;
+    width: 400px;
+    border: black 2px solid;
+    margin-right: 200px ;
+    margin-left: 200px;
+}
+
+.header1{
+
+    height: 60px;
+    border-radius: 20px;
+    background-color: cornflowerblue;
+
+}
