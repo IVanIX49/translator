@@ -1,1 +1,1 @@
-Simple translator on django and ai
+Simple translator on django with ai
